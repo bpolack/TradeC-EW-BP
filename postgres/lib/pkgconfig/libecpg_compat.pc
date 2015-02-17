@@ -1,0 +1,9 @@
+Name: libecpg_compat
+Description: PostgreSQL libecpg_compat library
+Url: http://www.postgresql.org/
+Version: 9.4.0
+Requires: 
+Requires.private: libecpg libpgtypes
+Cflags: -I/home/willeye/installs/postgres/include
+Libs: -L/home/willeye/installs/postgres/lib -lecpg_compat
+Libs.private:  -lpq -lm -lpthread

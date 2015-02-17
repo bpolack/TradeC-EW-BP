@@ -1,0 +1,9 @@
+Name: libecpg
+Description: PostgreSQL libecpg library
+Url: http://www.postgresql.org/
+Version: 9.4.0
+Requires: 
+Requires.private: libpq libpgtypes
+Cflags: -I/home/willeye/installs/postgres/include
+Libs: -L/home/willeye/installs/postgres/lib -lecpg
+Libs.private:  -lm -lpthread

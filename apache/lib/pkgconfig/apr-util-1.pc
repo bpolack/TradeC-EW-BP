@@ -1,0 +1,13 @@
+prefix=/seng/seng462/group2/apache/
+exec_prefix=/seng/seng462/group2/apache/
+libdir=${prefix}/lib
+APRUTIL_MAJOR_VERSION=1
+includedir=/seng/seng462/group2/apache//include
+
+Name: APR Utils
+Description: Companion library for APR
+Version: 1.5.4
+# assume that apr-util requires libapr of same major version
+Requires: apr-1
+Libs: -L${libdir} -laprutil-${APRUTIL_MAJOR_VERSION}  -lexpat
+Cflags: -I${includedir}

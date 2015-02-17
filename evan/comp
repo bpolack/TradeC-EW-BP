@@ -1,0 +1,11 @@
+gcc -Wall DBserver.c -o DBserver -lpthread -I/seng/seng462/group2/postgres/include -L/seng/seng462/group2/postgres/lib -lpq
+
+bash -c "LD_LIBRARY_PATH=/seng/seng462/group2/postgres/lib; export LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH=/seng/seng462/group2/postgres/lib
+
+/seng/seng462/group2/postgres/lib
+cd /seng/seng462/group2/evan
+
+gcc -Wall transServer.c -o transServer -lpthread
+
+./psql -d postgres -c "SELECT * FROM accounts"
