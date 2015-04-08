@@ -1,0 +1,28 @@
+./configure --prefix=/seng/seng462/group2/seng462DB/ --without-readline
+make
+make install
+
+CREATE TABLE accounts(User_ID char(10) PRIMARY KEY NOT NULL,Balance numeric(15,2) NOT NULL);
+CREATE TABLE transactions(User_ID char(10) REFERENCES accounts(User_ID),Trans_ID BIGINT NOT NULL,Stock_ID char(3),Adjustment numeric(15,2) NOT NULL,Timestamp bigint NOT NULL,Command char NOT NULL);
+CREATE TABLE triggers(User_ID char(10) REFERENCES accounts(User_ID),Trans_ID BIGINT,Stock_ID char(3) NOT NULL,Trigger_Type char NOT NULL,Reserved_Funds numeric(15,2) NOT NULL,Trigger_Value numeric(15,2) NOT NULL);
+CREATE TABLE stocks(User_ID char(10) REFERENCES accounts(User_ID),Stock_ID char(3) NOT NULL,Amount integer NOT NULL);
+
+CREATE TABLE accounts(User_ID char(10) NOT NULL,Balance numeric(15,2) NOT NULL);
+CREATE TABLE transactions(User_ID char(10) NOT NULL,Trans_ID BIGINT NOT NULL,Stock_ID char(3) NOT NULL,Adjustment numeric(15,2) NOT NULL,Timestamp bigint NOT NULL,Command char NOT NULL);
+CREATE TABLE triggers(User_ID char(10) NOT NULL,Trans_ID BIGINT NOT NULL,Stock_ID char(3) NOT NULL,Trigger_Type char NOT NULL,Reserved_Funds numeric(15,2) NOT NULL,Trigger_Value numeric(15,2) NOT NULL);
+CREATE TABLE stocks(User_ID char(10) NOT NULL,Stock_ID char(3) NOT NULL,Amount integer NOT NULL);
+
+.bashrc
+export LD_LIBRARY_PATH=/seng/seng462/group2/postgres/lib:/seng/seng462/group2/mxml/lib
+export PATH=$PATH:/seng/seng462/group2/cmake
+
+./initdb -D ../db -U willeye -U bpolack
+./pg_ctl start -l logfile -D ../db
+
+./psql -d postgres -p 44428 -U bpolack -c "GRANT ALL PRIVILEGES ON DATABASE postgres TO willeye"
+./psql -d postgres -p 44428 -U bpolack -c "ALTER ROLE willeye WITH LOGIN CREATEROLE CREATEDB REPLICATION"
+./psql -d postgres -p 44428 -U bpolack -c "CREATE ROLE willeye WITH SUPERUSER"
+./psql -d postgres -p 44428 -c "ALTER DATABASE template0 OWNER TO willeye"
+./psql -d postgres -h b147.seng.uvic.ca -p 44428 -c "\l"
+
+

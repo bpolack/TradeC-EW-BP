@@ -1,9 +1,0 @@
-[1] ADD,gDp4mjqeaH,511.53 
-[2] ADD,gDp4mjqeaH,763511.53
-[3] BUY,gDp4mjqeaH,ZUL,505535.81 
-[4] COMMIT_BUY,gDp4mjqeaH
-[5] SET_SELL_AMOUNT,gDp4mjqeaH,ZUL,55535.55 
-[5] SET_SELL_TRIGGER,gDp4mjqeaH,ZUL,623.14 
-[6] COMMIT_SELL,gDp4mjqeaH
-[7] QUOTE,gDp4mjqeaH,BFF
-[10000] DUMPLOG,logFile.xml
